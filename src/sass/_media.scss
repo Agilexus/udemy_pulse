@@ -1,0 +1,43 @@
+@media (max-width: 991px) {
+  .carousel {
+    .slick-prev, .slick-next {
+      left: -50px;
+      z-index: 2;
+    }
+  
+    .slick-next {
+      right: -50px;
+      left: auto;
+    }
+  }
+}
+
+@media (max-width: 860px) {
+  .carousel {
+    .slick-prev, .slick-next {
+      left: 0px;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.50);
+      border-radius: 100%;
+      padding: 12px 24px 12px 18px;
+    }
+    .slick-next {
+      right: 0px;
+      left: auto;
+      padding: 12px 18px 12px 24px;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 0 24px;
+  }
+  .carousel {
+    &__inner {
+      width: 100%;
+    }
+  }
+};
+
+@media (max-width: 576px) {};

@@ -1,0 +1,47 @@
+.footer {
+  height: 630px;
+  position: relative;
+  &__info {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 460px;
+    height: 260px;
+    padding: 50px 50px 56px 50px;
+    background-color: $main-color;
+  }
+  &__addr {
+    margin-bottom: 0;
+    color: #FFF;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 20px; 
+  }
+  &__phone {
+    text-decoration: none;
+    display: block;
+    margin: 32px auto 0 auto;
+    color: #FFF;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    &:hover {
+      color: #FFF;
+    }
+  }
+  &__social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 32px auto 0 auto;
+  }
+  &__social-item {
+    margin-right: 24px;
+    &:nth-child(3) {
+      margin-right: 0;
+    }
+  }
+}
