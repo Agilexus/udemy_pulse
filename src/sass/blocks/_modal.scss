@@ -39,6 +39,15 @@
     font-size: 14px;
     font-weight: 700;
   }
+  .error {
+    border: 1px solid red;
+  }
+  label.error {
+    border: none;
+    color: red;
+    margin-top: -10px;
+    margin-bottom: 20px;
+  }
 }
 
 #consultation, #order, #thanks {

@@ -63,4 +63,71 @@ $(document).ready(function(){
   $('.modal__close').on('click', function() {
     $('.overlay, #consultation, #order, #thanks').fadeOut('slow');
   })
+
+  // $('#consultation-form').validate()
+  // $('#consultation form').validate({
+  //   rules: {
+  //     name: {
+  //       required: true,
+  //     },
+  //     phone: {
+  //       required: true,
+  //       minlength: 13
+  //     },
+  //     email: {
+  //       required: true,
+  //       email: true
+  //     }
+  //   },
+  //   messages: {
+  //     name: {
+  //       required: "Пожалуйста, введите свое имя"
+  //     },
+  //     phone: {
+  //       required: "Пожалуйста, введите свой номер телефон",
+  //       minlength: jQuery.validator.format("Номер телеону має складатись з {0} символів")
+  //     },
+  //     email: {
+  //       required: "Пожалуйстка, введите ваш email",
+  //       email: "Email должен быть в формате: name@domain.com"
+  //     }
+  //   }
+  // })
+  // $('#order form').validate()
+
+  function valideForms(form) {
+    $(form).validate({
+      rules: {
+        name: {
+          required: true,
+        },
+        phone: {
+          required: true,
+          minlength: 13
+        },
+        email: {
+          required: true,
+          email: true
+        }
+      },
+      messages: {
+        name: {
+          required: "Пожалуйста, введите свое имя"
+        },
+        phone: {
+          required: "Пожалуйста, введите свой номер телефон",
+          minlength: jQuery.validator.format("Номер телеону має складатись з {0} символів")
+        },
+        email: {
+          required: "Пожалуйстка, введите ваш email",
+          email: "Email должен быть в формате: name@domain.com"
+        }
+      }
+    })
+  }
+  valideForms('#consultation-form');
+  valideForms('#consultation form');
+  valideForms('#order form');
+
+  $('input[name=phone]').mask("+380 (99) 999 99 99");
 });
