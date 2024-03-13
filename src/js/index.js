@@ -64,37 +64,6 @@ $(document).ready(function(){
     $('.overlay, #consultation, #order, #thanks').fadeOut('slow');
   })
 
-  // $('#consultation-form').validate()
-  // $('#consultation form').validate({
-  //   rules: {
-  //     name: {
-  //       required: true,
-  //     },
-  //     phone: {
-  //       required: true,
-  //       minlength: 13
-  //     },
-  //     email: {
-  //       required: true,
-  //       email: true
-  //     }
-  //   },
-  //   messages: {
-  //     name: {
-  //       required: "Пожалуйста, введите свое имя"
-  //     },
-  //     phone: {
-  //       required: "Пожалуйста, введите свой номер телефон",
-  //       minlength: jQuery.validator.format("Номер телеону має складатись з {0} символів")
-  //     },
-  //     email: {
-  //       required: "Пожалуйстка, введите ваш email",
-  //       email: "Email должен быть в формате: name@domain.com"
-  //     }
-  //   }
-  // })
-  // $('#order form').validate()
-
   function valideForms(form) {
     $(form).validate({
       rules: {
@@ -130,4 +99,53 @@ $(document).ready(function(){
   valideForms('#order form');
 
   $('input[name=phone]').mask("+380 (99) 999 99 99");
+
+  $('form').submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "mailer/smart.php",
+        data: $(this).serialize()
+    }).done(function() {
+        $(this).find("input").val("");
+        $('#consultation, #order').fadeOut();
+        $('.overlay, #thanks').fadeIn('slow');
+
+        $('form').trigger('reset');
+    });
+    return false;
+  });
+
+  // Smooth scroll and pageup
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 1000) {
+      $('.pageup').fadeIn();
+    } else {
+      $('.pageup').fadeOut();
+    }
+
+    // $("a[href^='#'").click(function() {
+    //   const _href = $(this).attr("href");
+    //   $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
+    //   return false;
+    // })
+
+    $("#up").on('click', function(event) {
+      if (this.hash !== "") {
+        event.preventDefault();
+        let hash = this.hash;
+        $('html, body').animate({
+            scrollTop: $(hash).offset().top
+        }, {
+            duration: 50,
+            easing: "linear", // Змінити easing на "linear" або "swing"
+            complete: function(){
+                window.location.hash = hash;
+            }
+        });
+      } 
+    });
+  })
+
+  new WOW().init();
 });
